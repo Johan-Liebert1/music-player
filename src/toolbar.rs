@@ -1,6 +1,7 @@
-use crate::gtk::prelude::{
-    ApplicationExt, ApplicationExtManual, ContainerExt, GtkWindowExt, WidgetExt,
-};
+use crate::gtk::prelude::{ContainerExt, WidgetExt};
+
+use crate::playlist::Playlist;
+use gtk::{traits::ImageExt, Image};
 
 use gtk::{SeparatorToolItem, ToolButton, Toolbar};
 
@@ -62,4 +63,11 @@ impl MusicToolbar {
     pub fn toolbar(&self) -> &Toolbar {
         &self.toolbar
     }
+}
+
+pub fn set_cover(cover: &Image, playlist: &Playlist) {
+    println!("set_cover function called");
+
+    cover.set_from_pixbuf(playlist.pixbuf().as_ref());
+    cover.show();
 }
